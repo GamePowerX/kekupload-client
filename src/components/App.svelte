@@ -1,21 +1,52 @@
 <script lang="ts">
     import config from "../config";
     import FileSelector from "./FileSelector.svelte";
+    import UploadList from "./UploadList.svelte";
 
-    const onfiles = (files: FileList)=>{
-        console.log(files);
-    }
+    let uploadList: UploadList;
 </script>
 
 <main>
     <h1>{config.title}</h1>
     <p>{config.description}</p>
 
-    <FileSelector onfiles={onfiles}/>
+    <FileSelector onfiles={(f)=>uploadList.addFiles(f)}/>
+        
+    <div class="spacer"></div>
+
+    <UploadList bind:this={uploadList}/>
+
+    <div class="spacer"></div>
+
+    <button on:click={()=>uploadList.uploadAll()}>Upload all</button>
 </main>
 
 <style>
     @import "../theme.css";
+
+    :global(button) {
+        background-color: var(--primary);
+        outline: none;
+        border: 3px solid var(--border);
+        padding: 5px 10px;
+        font-size: 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    :global(button:hover) {
+        background-color: var(--primary-hover);
+    }
+
+    :global(input) {
+        background-color: var(--secondary);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 0 10px;
+        outline: none;
+        color: var(--text-secondary);
+    }
 
     :global(p) {
         color: var(--text-secondary);
@@ -46,6 +77,7 @@
         justify-content: center;
         align-items: center;
         min-height: 100%;
+        padding: 10px 0;
         width: 100%;
     }
 
@@ -61,4 +93,14 @@
         justify-content: center;
         flex-direction: column;
     }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .spacer {
+        margin-bottom: 20px;
+    }
+
+    
 </style>

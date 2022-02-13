@@ -24,14 +24,14 @@
         select.click();
     }
 
-    const onselect = (e: Event)=>{
-
+    const onchange = (e: Event)=>{
+        onfiles((e.target as HTMLInputElement).files);
     }
 </script>
 
 <div class="drop" style={style} on:dragover={ondragover} on:dragleave={ondragleave} on:drop={ondrop} on:click={onclick}>
     <h2>Drag & Drop</h2>
-    <input bind:this={select} on:select={onselect} id="select-files" type="file">
+    <input bind:this={select} on:change={onchange} id="select-files" multiple type="file">
 </div>
 
 
@@ -45,6 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: pointer;
     }
     input {
         display: none;
