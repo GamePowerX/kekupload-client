@@ -20,6 +20,7 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
+    "@vitejs/plugin-legacy": "^1.7.1",
     "crypto-js": "^4.1.1"
   }
 }

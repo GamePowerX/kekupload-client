@@ -29,7 +29,7 @@
     }
 
     export function startUpload() {
-        if(!isUploading) {
+        if(!isUploading && !uploadId) {
             isUploading = true;
 
             entryId = api.startUpload(file, (status)=>{
