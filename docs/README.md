@@ -56,4 +56,4 @@ If you have aditional ideas how to make this tool better please create a feature
 <br>
 
 ## Contributing
-More information [here](https://github.com/KekOnTheWorld/uploadclient/blob/main/CONTRIBUTE.md).
+More information [here](https://kotw.dev/uploadclient/CONTRIBUTE.md).
