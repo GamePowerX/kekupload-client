@@ -2,6 +2,8 @@
 
 A client for uploading files using [UploadServer](https://github.com/KekOnTheWorld/uploadserver) as backend.
 
+<br>
+
 ## License
 This project is licensed under the [Mit License](https://mit-license.org/)
 
