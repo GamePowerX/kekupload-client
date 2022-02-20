@@ -48,4 +48,9 @@ echo "  api: { baseurl: '$api_base' }" >> $config
 
 echo "};" >> $config
 
+# build
+npm install
+npm run build
+mv dist ../web
+
 printf $cyan"\nuploadclient configure script finished.\n\n"$reset
