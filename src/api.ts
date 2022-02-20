@@ -111,7 +111,10 @@ async function work() {
 
 async function uploadFile(file: File, onStatus: (percentage: number)=>void, onSuccess: (id: String)=>void, onError: (error: String)=>void, onFinish: (undefined)=>void) {
     let splitname = file.name.split(".");
-    let ext = splitname[splitname.length-1];
+    let ext = splitname.length>1?splitname[splitname.length-1]:"none";
+    if(ext === "") ext = " ";
+
+    ext = encodeURIComponent(ext)
 
     let id = await createStream(ext);
 
