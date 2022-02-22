@@ -1,5 +1,3 @@
-#!/usr/bin/bash
-
 # Utility for configuring uploadclient
 # Written by KekOnTheWorld
 
