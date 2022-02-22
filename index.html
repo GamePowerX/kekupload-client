@@ -3,6 +3,7 @@
   <head>
     <link rel="icon" href="/favicon.ico" />
     <link rel="manifest" href="manifest.json" />
+
     <meta name="theme-color" content="#000000" />
     <meta charset="UTF-8" />
     
@@ -11,10 +12,21 @@
       content="KekW"
     />
     
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KekUpload</title>
+
+    <link rel="stylesheet" id="theme" href="/themes/matrix.css">
+    <script>
+        // YOU CAN CHANGE THE DEFAULT THEME BY CHANGING THE korng
+        if(!localStorage.theme) localStorage.theme = "korng";
+        document.getElementById("theme").href = "/themes/" + localStorage.theme + ".css";
+    </script>
+
   </head>
   <body>
+    
+
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

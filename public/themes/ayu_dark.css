@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400&display=swap');
+
+* {
+    font-family: 'Rowdies', cursive;
+}
+
+:root {
+    --border: rgba(75, 75, 121, 0.644);
+    --primary: rgb(7, 10, 24);
+    --primary-hover: rgb(42, 47, 80);
+    --secondary: rgb(0, 0, 15);
+    --text: white;
+    --text-secondary: gray;
+    --background: rgb(9, 6, 15);
+
+    --highlight: rgb(42, 47, 80);
+}

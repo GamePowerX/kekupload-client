@@ -1,6 +1,7 @@
 <script lang="ts">
     import config from "../config";
     import FileSelector from "./FileSelector.svelte";
+    import ThemeSelector from "./ThemeSelector.svelte";
     import UploadList from "./UploadList.svelte";
 
     let uploadList: UploadList;
@@ -21,9 +22,9 @@
     <button on:click={()=>uploadList.uploadAll()}>Upload all</button>
 </main>
 
-<style>
-    @import "../theme.css";
+<ThemeSelector/>
 
+<style>
     :global(button) {
         background-color: var(--primary);
         outline: none;
