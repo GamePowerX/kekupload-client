@@ -1,6 +1,6 @@
-# UploadClient
+# KekUpload client
 
-A client for uploading files using [UploadServer](https://github.com/KotwOSS/uploadserver) as backend.
+A frontend for uploading files to [KekUpload server](https://oss.kotw.dev/kekupload-server) using [KekUpload lib-ts](https://oss.kotw.dev/kekupload-lib-ts).
 
 <br>
 
@@ -46,14 +46,14 @@ npm run dev
 
 ## Goals
 
-- Implementing all the features [UploadServer](https://github.com/KotwOSS/uploadserver) provides
+- Implementing all the features [UploadServer](https://github.com/KotwOSS/kekupload-server) provides
 
 <br>
 
-If you have aditional ideas how to make this tool better please create a feature request in the issues tab from this repository or a if the request is about adding new backend features [here](https://github.com/KotwOSS/uploadserver).
+If you have aditional ideas how to make this tool better please create a feature request in the issues tab from this repository or a if the request is about adding new backend features [here](https://github.com/KotwOSS/kekupload-server).
 
 <hr>
 <br>
 
 ## Contributing
-More information [here](https://oss.kotw.dev/uploadclient/CONTRIBUTE).
+More information [here](https://oss.kotw.dev/kekupload-client/CONTRIBUTE).
