@@ -131,6 +131,15 @@ async function uploadFile(file: File, onStatus: (percentage: number)=>void, onSu
                     let res = e.target.result as ArrayBuffer;
                     for(let f = 0; f < res.byteLength && running; f+=config.chunkSize) {
                         let success = false;
+
+                        let buf = res.slice(f, f+config.chunkSize);
+
+                        let wordArray = arrayBufferToWordArray(buf);
+
+                        let chunkHash = CryptoJS.SHA1(wordArray).toString();
+
+                        hash.update(wordArray);
+
                         while(!success) {
                             if(cancelCallbacks[id]) {
                                 running = false;
@@ -139,14 +148,8 @@ async function uploadFile(file: File, onStatus: (percentage: number)=>void, onSu
             
 
                             try {
-                                let buf = res.slice(f, f+config.chunkSize);
-
-                                let wordArray = arrayBufferToWordArray(buf);
-
-                                hash.update(wordArray);
-
-                                await uploadChunk(id, CryptoJS.SHA1(wordArray).toString(), res.slice(f, f+config.chunkSize));
-
+                                await uploadChunk(id, chunkHash, res.slice(f, f+config.chunkSize));
+        
                                 success = true;
 
                                 onStatus((i+f)/file.size);
