@@ -1,6 +1,5 @@
 <script lang="ts">
-    import api from "../api";
-    import config from "../config";
+    import * as config from "../config";
 
     export let file: File;
     export let index: number;
@@ -11,8 +10,7 @@
     let uploadlink: HTMLInputElement;
 
     let isUploading = false;
-    let statusbarStyle = "width: 0px;";
-    let statusPercentage = "0%";
+    let status: number = 0;
 
     let uploadId: undefined | String;
 
@@ -28,30 +26,29 @@
         } else return size + " bytes";
     }
 
-    export function startUpload() {
+    export async function startUpload() {
         if(!isUploading && !uploadId) {
             isUploading = true;
 
-            entryId = api.startUpload(file, (status)=>{
-                statusPercentage = (status*100).toFixed(2) + "%";
-                statusbarStyle = "width: " + statusPercentage;
-                console.log("STATUS: " + status);
-            }, (id)=>{
-                console.log("SUCCESS: " + id);
-                isUploading = false;
-                uploadId = id;
-            }, (err)=>{
-                console.log("ERROR: " + err);
-                alert("Oh shit! This upload failed! (" + file.name + " | " + err + ")");
+            const ext = file.name.split(".").pop();
+
+            entryId = config.uploader.add_job({
+                then: ({id}) => uploadId = id,
+                finally: () => isUploading = false,
+                on_progress: (s) => status = s,
+                catch: (e) => {
+                    if(e !== "CANCELLED") alert("Error while uploading: " + e);
+                },
+                file,
+                ext
             });
         }
     }
 
     async function onCancel() {
         if(isUploading) {
-            await api.cancelUpload(entryId);
-            statusbarStyle = "width: 0px;";
-            statusPercentage = "0%";
+            await config.uploader.cancel_job(entryId);
+            status = 0;
             isUploading = false;
         } else onclose(index);
     }
@@ -70,7 +67,7 @@
     </div>
     {#if uploadId}
     <div class="uploadlink">
-        <input bind:this={uploadlink} type="text" value={config.baseDownload + uploadId}>
+        <input bind:this={uploadlink} type="text" value={config.base_download + uploadId}>
         <button on:click={()=>{
             uploadlink.select();
             uploadlink.setSelectionRange(0, 99999);
@@ -80,11 +77,12 @@
     {/if}
 
     {#if isUploading}
+    
     <div class="status">
         <div class="statusbar-wrapper">
-            <div class="statusbar" style={statusbarStyle}></div>
+            <div class="statusbar" style="width: {status*100}%;"></div>
         </div>
-        <p class="statusper">{statusPercentage}</p>
+        <p class="statusper">{(status*100).toFixed(2)}%</p>
     </div>
     {/if}
 </main>
