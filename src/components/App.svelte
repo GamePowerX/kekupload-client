@@ -1,5 +1,5 @@
 <script lang="ts">
-    import config from "../config";
+    import * as config from "../config";
     import FileSelector from "./FileSelector.svelte";
     import ThemeSelector from "./ThemeSelector.svelte";
     import UploadList from "./UploadList.svelte";
