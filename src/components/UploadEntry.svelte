@@ -37,7 +37,7 @@
                 finally: () => isUploading = false,
                 on_progress: (s) => status = s,
                 catch: (e) => {
-                    if(e !== "CANCELLED") alert("Error while uploading: " + e);
+                    if(e !== "CANCELLED") alert("Error while uploading: " + JSON.stringify(e));
                 },
                 file,
                 ext
