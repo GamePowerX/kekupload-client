@@ -12,5 +12,10 @@
     --text: rgb(43, 255, 0);
     --text-secondary: rgba(51, 255, 0, 0.747);
     --background: black;
-    --highlight: rgba(50, 235, 50, 0.253);
+    --highlight: rgb(46, 119, 255);
+    --theme-hover: rgba(50, 235, 50, 0.253);
+}
+
+.hint {
+    color: rgb(0, 89, 255);
 }

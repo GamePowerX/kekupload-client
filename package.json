@@ -23,6 +23,6 @@
   "dependencies": {
     "@vitejs/plugin-legacy": "^1.7.1",
     "crypto-js": "^4.1.1",
-    "kekupload-lib-ts": "^2.0.0-beta1"
+    "kekupload-lib-ts": "^2.0.0-beta5"
   }
 }

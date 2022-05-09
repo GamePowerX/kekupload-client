@@ -10,6 +10,8 @@
     let uploadlink: HTMLInputElement;
 
     let isUploading = false;
+    let isQueueing = false;
+    let isRemoving = false;
     let status: number = 0;
 
     let uploadId: undefined | String;
@@ -28,6 +30,7 @@
 
     export async function startUpload() {
         if(!isUploading && !uploadId) {
+            isQueueing = true;
             isUploading = true;
 
             const ext = file.name.split(".").pop();
@@ -35,8 +38,13 @@
             entryId = config.uploader.add_job({
                 then: ({id}) => uploadId = id,
                 finally: () => isUploading = false,
-                on_progress: (s) => status = s,
+                on_progress: (s) => {
+                    if(isQueueing) isQueueing = false;
+
+                    status = s;
+                },
                 catch: (e) => {
+                    console.log(e);
                     if(e !== "CANCELLED") alert("Error while uploading: " + JSON.stringify(e));
                 },
                 file,
@@ -47,9 +55,12 @@
 
     async function onCancel() {
         if(isUploading) {
-            await config.uploader.cancel_job(entryId);
+            isRemoving = true;
+            await config.uploader.cancel_job(entryId)
+                .catch(e => alert("Error while removing: " + JSON.stringify(e)));
             status = 0;
             isUploading = false;
+            isRemoving = false;
         } else onclose(index);
     }
 </script>
@@ -77,13 +88,20 @@
     {/if}
 
     {#if isUploading}
-    
-    <div class="status">
-        <div class="statusbar-wrapper">
-            <div class="statusbar" style="width: {status*100}%;"></div>
+        <div class="status">
+        {#if isQueueing}
+            <p class="hint">Waiting for Queue...</p>
+        {:else}
+            {#if isRemoving}
+                <p class="hint">Removing...</p>
+            {:else}
+                <div class="statusbar-wrapper">
+                    <div class="statusbar" style="width: {status*100}%;"></div>
+                </div>
+                <p class="statusper">{(status*100).toFixed(2)}%</p>
+            {/if}
+        {/if}
         </div>
-        <p class="statusper">{(status*100).toFixed(2)}%</p>
-    </div>
     {/if}
 </main>
 
@@ -141,15 +159,17 @@
     }
 
     .status {
+        margin-top: 3px;
         display: flex;
         align-items: center;
     }
 
     .statusbar-wrapper {
         width: calc(100% - 90px);
-        height: 7px;
+        height: 9px;
         border: 1px solid var(--border);
         border-radius: 5px;
+        padding: 0;
     }
 
     .statusbar {

@@ -26,8 +26,10 @@
 {#if files.length > 0}
 <main>
     {#each files as file, i}
-	<UploadEntry bind:this={uploadEntries[i]} file={file} index={i} onclose={removeitem} />
-    <div class="spacer"></div>
+        <!-- {#key file} -->
+        <UploadEntry bind:this={uploadEntries[i]} file={file} index={i} onclose={() => removeitem(i)} />
+        <div class="spacer"></div>
+        <!-- {/key} -->
     {/each}
 </main>
 {/if}

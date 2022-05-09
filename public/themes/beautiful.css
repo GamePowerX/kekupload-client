@@ -1,0 +1,23 @@
+* {
+    font-family: serif;
+}
+
+:root {
+    --border: rgba(41, 41, 41, 0.3);
+    --primary: rgb(255, 0, 0);
+    --primary-hover: rgb(156, 0, 0);
+    --secondary: rgb(0, 121, 80);
+    --text: rgb(79, 216, 4);
+    --text-secondary: rgb(255, 255, 255);
+    --background: rgb(141, 73, 220);
+    --highlight: rgb(111, 255, 255);
+    --theme-hover: rgb(0, 117, 78);
+}
+
+.hint {
+    color: rgb(220, 103, 255);
+}
+
+button {
+    color: rgb(255, 255, 255);
+}
