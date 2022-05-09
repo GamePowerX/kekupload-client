@@ -1,16 +1,16 @@
 <script lang="ts">
     import themes from "../themes";
-
-    let menuStyle = "display: none";
+    import { fade } from "svelte/transition";
 
     let activeTheme = localStorage.theme;
+    let isOpen = false;
 
     function openMenu() {
-        menuStyle = "";
+        isOpen = true;
     }
 
     function closeMenu() {
-        menuStyle = "display: none";
+        isOpen = false;
     }
 
     function setTheme(index: number) {
@@ -23,24 +23,29 @@
 
 <p class="open" on:click={openMenu}>Theme</p>
 
-<div class="menu" style={menuStyle}>
-    <main>
-        <h1>Theme</h1>
-        <p>Please select the theme you want.</p>
+{#if isOpen}
+    <div class="menu" transition:fade={{ duration: 50 }}>
+        <main>
+            <h1>Theme</h1>
+            <p>Please select the theme you want.</p>
 
-        {#each themes as theme, i }
-            <div class="theme" on:click={()=>setTheme(i)}>
-                <h3>{theme.name}</h3>
-                {#if theme.file===activeTheme}
-                    <p>active</p>
-                {/if}
-            </div>
-        {/each}
-    </main>    
-    <p class="close" on:click={closeMenu}>Back</p>
-</div>
+            {#each themes as theme, i }
+                <div class="theme" class:active={theme.file===activeTheme} on:click={()=>setTheme(i)}>
+                    <h3>{theme.name}</h3>
+                </div>
+            {/each}
+        </main>    
+        <p class="close" on:click={closeMenu}>Back</p>
+    </div>
+{/if}
 
 <style>
+    .theme.active::after {
+        content: "active";
+        color: var(--highlight);
+        margin-left: 5px;
+    }
+
     .open,.close {
         position: fixed;
         bottom: 0;
@@ -94,12 +99,8 @@
         justify-content: center;
     }
 
-    .theme>p {
-        margin-left: 5px;
-    }
-
     .theme:hover {
-        background-color: var(--highlight);
+        background-color: var(--theme-hover);
     }
 
 </style>

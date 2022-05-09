@@ -13,4 +13,9 @@
     --text-secondary: gray;
     --background: black;
     --highlight: rgb(235, 102, 50);
+    --theme-hover: rgba(160, 72, 0, 0.5);
+}
+
+.hint {
+    color: rgb(235, 102, 50);
 }
