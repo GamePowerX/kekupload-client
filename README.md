@@ -2,6 +2,8 @@
 
 A frontend for uploading files to [KekUpload server](https://oss.kotw.dev/kekupload-server) using [KekUpload lib-ts](https://oss.kotw.dev/kekupload-lib-ts).
 
+A Demo can be found [here](https://upload.gamepowerx.com)
+
 <br>
 
 ## License
@@ -36,8 +38,8 @@ The files will be located in `dist`
 
 <br>
 
-### Testing
-If you are developing and don't want to rebuild to release mode use
+### Development
+This will start a vite development server
 ```sh
 npm run dev
 ```
@@ -46,7 +48,7 @@ npm run dev
 
 ## Goals
 
-- Implementing all the features [UploadServer](https://github.com/KotwOSS/kekupload-server) provides
+- Implementing all the features [kekupload-server](https://github.com/KotwOSS/kekupload-server) provides
 
 <br>
 
