@@ -1,4 +1,5 @@
 node_modules/
-package-lock.json
 dist/
 src/config.ts
+*lock.*
+!package-lock.json
