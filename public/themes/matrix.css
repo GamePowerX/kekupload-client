@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400&display=swap");
 
 * {
-    font-family: 'Rowdies', cursive;
+  font-family: "Rowdies", cursive;
 }
 
 :root {
-    --border: rgb(43, 255, 0);
-    --primary: rgba(17, 202, 0, 0.007);
-    --primary-hover: rgba(50, 235, 50, 0.253);
-    --secondary: rgb(0, 0, 0);
-    --text: rgb(43, 255, 0);
-    --text-secondary: rgba(51, 255, 0, 0.747);
-    --background: black;
-    --highlight: rgb(46, 119, 255);
-    --theme-hover: rgba(50, 235, 50, 0.253);
+  --border: rgb(43, 255, 0);
+  --primary: rgba(17, 202, 0, 0.007);
+  --primary-hover: rgba(50, 235, 50, 0.253);
+  --secondary: rgb(0, 0, 0);
+  --text: rgb(43, 255, 0);
+  --text-secondary: rgba(51, 255, 0, 0.747);
+  --background: black;
+  --highlight: rgb(46, 119, 255);
+  --theme-hover: rgba(50, 235, 50, 0.253);
 }
 
 .hint {
-    color: rgb(0, 89, 255);
+  color: rgb(0, 89, 255);
 }
