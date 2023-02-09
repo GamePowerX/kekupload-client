@@ -1,33 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@200;300&display=swap");
 
 * {
-  font-family: "Rowdies", cursive;
+	font-family: "Rowdies", cursive;
 }
 
 :root {
-  --border: rgb(47, 51, 77);
-  --primary: rgb(58, 76, 114);
-  --primary-hover: rgb(75, 95, 136);
-  --secondary: rgb(34, 36, 54);
-  --text: rgb(175, 175, 175);
-  --text-secondary: rgb(116, 116, 116);
-  --background: rgb(30, 32, 48);
-  --highlight: rgb(68, 150, 146);
-  --theme-hover: rgba(46, 104, 101, 0.3);
+	--border: rgb(47, 51, 77);
+	--primary: rgb(58, 76, 114);
+	--primary-hover: rgb(75, 95, 136);
+	--secondary: rgb(34, 36, 54);
+	--text: rgb(175, 175, 175);
+	--text-secondary: rgb(116, 116, 116);
+	--background: rgb(30, 32, 48);
+	--highlight: rgb(68, 150, 146);
+	--theme-hover: rgba(46, 104, 101, 0.3);
 }
 
 .hint {
-  color: rgb(56, 125, 122);
+	color: rgb(56, 125, 122);
 }
 
 button:hover {
-  color: black;
+	color: black;
 }
 
 button {
-  color: rgb(151, 151, 151);
+	color: rgb(151, 151, 151);
 }
 
 .drop.active h2 {
-  color: black;
+	color: black;
 }
