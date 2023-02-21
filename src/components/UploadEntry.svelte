@@ -39,7 +39,6 @@
                 then: ({id}) => uploadId = id,
                 finally: () => isUploading = false,
                 on_progress: (s) => {
-                    console.log(s);
                     if(isQueueing) isQueueing = false;
 
                     status = s;
