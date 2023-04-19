@@ -27,6 +27,6 @@
 		"crypto-js": "^4.1.1",
 		"kekupload-lib-ts": "v2.0.2",
 		"prettier": "^2.8.7",
-		"terser": "^5.16.9"
+		"terser": "^5.17.1"
 	}
 }
