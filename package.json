@@ -1,7 +1,7 @@
 {
 	"name": "kekupload-client",
 	"private": true,
-	"version": "v2.0.2",
+	"version": "v2.0.2a3",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
@@ -25,7 +25,7 @@
 	"dependencies": {
 		"@vitejs/plugin-legacy": "^4.0.2",
 		"crypto-js": "^4.1.1",
-		"kekupload-lib-ts": "v2.0.2",
+		"kekupload-lib-ts": "v2.0.2a3",
 		"prettier": "^2.8.7",
 		"terser": "^5.17.1"
 	}
