@@ -48,7 +48,8 @@
                     if(e !== "CANCELLED") alert("Error while uploading: " + JSON.stringify(e));
                 },
                 file,
-                ext
+                ext,
+                name: config.upload_with_filename ? file.name.split(".").slice(0, -1).join(".") : null,
             });
         }
     }
