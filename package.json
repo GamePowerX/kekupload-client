@@ -24,7 +24,7 @@
 	},
 	"dependencies": {
 		"@vitejs/plugin-legacy": "^4.1.1",
-		"crypto-js": "^4.1.1",
+		"crypto-js": "^4.2.0",
 		"kekupload-lib-ts": "v2.0.2a3",
 		"prettier": "^2.8.8",
 		"terser": "^5.18.2"
