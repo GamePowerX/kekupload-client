@@ -1,7 +1,7 @@
 <script lang="ts">
     import UploadEntry from "./UploadEntry.svelte";
 
-    let uploadEntries: Object = {};
+    let uploadEntries: Record<number, UploadEntry> = {};
 
     let files: Array<File> = [];
 

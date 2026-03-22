@@ -16,12 +16,15 @@
     function setTheme(index: number) {
         activeTheme = themes[index].file;
         localStorage.theme = activeTheme;
-        document.getElementById("theme").setAttribute("href", "/themes/" + activeTheme + ".css");
+        const themeElement = document.getElementById("theme");
+        if (themeElement) {
+            themeElement.setAttribute("href", "/themes/" + activeTheme + ".css");
+        }
     }
 </script>
 
 
-<p class="open" on:click={openMenu}>Theme</p>
+<button class="open" type="button" on:click={openMenu}>Theme</button>
 
 {#if isOpen}
     <div class="menu" transition:fade={{ duration: 50 }}>
@@ -30,12 +33,12 @@
             <p>Please select the theme you want.</p>
 
             {#each themes as theme, i }
-                <div class="theme" class:active={theme.file===activeTheme} on:click={()=>setTheme(i)}>
+                <button type="button" class="theme" class:active={theme.file===activeTheme} on:click={()=>setTheme(i)}>
                     <h3>{theme.name}</h3>
-                </div>
+                </button>
             {/each}
         </main>    
-        <p class="close" on:click={closeMenu}>Back</p>
+        <button class="close" type="button" on:click={closeMenu}>Back</button>
     </div>
 {/if}
 
@@ -52,6 +55,9 @@
         left: 0;
         cursor: pointer;
         user-select: none;
+        background: none;
+        border: none;
+        padding: 0;
     }
 
     .menu {
@@ -86,6 +92,7 @@
 
     .theme {
         border: 1px solid var(--border);
+        background: transparent;
         border-radius: 20px;
         padding: 8px 20px;
         width: 90%;

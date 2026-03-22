@@ -14,7 +14,7 @@
     let isRemoving = false;
     let status: number = 0;
 
-    let uploadId: undefined | String;
+    let uploadId: string | undefined;
 
     function makeHuman(size: number) {
         if(size >= 1099511627776) {
@@ -33,7 +33,7 @@
             isQueueing = true;
             isUploading = true;
 
-            const ext = file.name.split(".").pop();
+            const ext = file.name.includes(".") ? (file.name.split(".").pop() || "") : "";
 
             entryId = config.uploader.add_job({
                 then: ({id}) => uploadId = id,
@@ -49,7 +49,7 @@
                 },
                 file,
                 ext,
-                name: config.upload_with_filename ? file.name.split(".").slice(0, -1).join(".") : null,
+                name: config.upload_with_filename ? file.name.split(".").slice(0, -1).join(".") : undefined,
             });
         }
     }
@@ -72,9 +72,13 @@
             <p>{file.name}</p>
             <p>{makeHuman(file.size)}</p>
         </div>
-        <img on:click={onCancel} class="cancel" src="assets/cancel.png" alt="" srcset="">
+        <button type="button" class="icon-btn cancel" on:click={onCancel} aria-label="Cancel upload or remove entry">
+            <img src="assets/cancel.png" alt="" srcset="">
+        </button>
         {#if !isUploading && !uploadId}
-        <img on:click={startUpload} class="upload" src="assets/upload.png" alt="" srcset="">
+        <button type="button" class="icon-btn upload" on:click={startUpload} aria-label="Start upload">
+            <img src="assets/upload.png" alt="" srcset="">
+        </button>
         {/if}
     </div>
     {#if uploadId}
@@ -148,11 +152,21 @@
         width: calc(100% - 60px);
     }
 
+    .icon-btn {
+        margin-left: auto;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     img {
         margin-left: auto;
         width: 25px;
         height: 25px;
-        cursor: pointer;
     }
 
     .upload {

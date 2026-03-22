@@ -1,9 +1,9 @@
 <script lang="ts">
     export let onfiles: (files: FileList)=>void; 
     
-    let style;
-    let select;
-    let active;
+    let style = "";
+    let select: HTMLInputElement;
+    let active = false;
 
     const ondragover = (e: DragEvent)=>{
         style = "background-color: var(--highlight)";
@@ -11,7 +11,7 @@
         e.preventDefault();
     };
 
-    const ondragleave = (e: DragEvent)=>{
+    const ondragleave = ()=>{
         active = false;
         style = "";
     };
@@ -21,19 +21,31 @@
         style = "";
         e.preventDefault();
 
-        onfiles(e.dataTransfer.files);
+        if (e.dataTransfer?.files) {
+            onfiles(e.dataTransfer.files);
+        }
     }
 
-    const onclick = (e: MouseEvent)=>{
+    const onclick = ()=>{
         select.click();
     }
 
+    const onkeydown = (e: KeyboardEvent)=>{
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            select.click();
+        }
+    }
+
     const onchange = (e: Event)=>{
-        onfiles((e.target as HTMLInputElement).files);
+        const files = (e.target as HTMLInputElement).files;
+        if (files) {
+            onfiles(files);
+        }
     }
 </script>
 
-<div class="drop" class:active  style={style} on:dragover={ondragover} on:dragleave={ondragleave} on:drop={ondrop} on:click={onclick}>
+<div class="drop" class:active  style={style} role="button" tabindex="0" on:dragover={ondragover} on:dragleave={ondragleave} on:drop={ondrop} on:click={onclick} on:keydown={onkeydown}>
     <h2>Drag & Drop</h2>
     <input bind:this={select} on:change={onchange} id="select-files" multiple type="file">
 </div>
