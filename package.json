@@ -23,7 +23,7 @@
 		"vite": "^8.0.1"
 	},
 	"dependencies": {
-		"@vitejs/plugin-legacy": "^8.0.0",
+		"@vitejs/plugin-legacy": "^8.0.1",
 		"crypto-js": "^4.2.0",
 		"kekupload-lib-ts": "2.0.2-alpha4",
 		"prettier": "^3.8.1",
