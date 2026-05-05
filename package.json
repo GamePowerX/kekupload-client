@@ -14,7 +14,7 @@
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^7.0.0",
+		"@sveltejs/vite-plugin-svelte": "^7.1.0",
 		"@tsconfig/svelte": "^5.0.8",
 		"svelte": "^5.55.5",
 		"svelte-check": "^4.4.6",
