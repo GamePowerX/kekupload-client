@@ -1,33 +1,27 @@
 {
-	"name": "kekupload-client",
+	"name": "migrate-sveltekit",
 	"private": true,
-	"version": "2.0.4",
-	"packageManager": "yarn@1.22.22",
+	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite dev",
 		"build": "vite build",
-		"help": "vite help",
 		"preview": "vite preview",
-		"test": "yarn run check",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/vite-plugin-svelte": "^7.0.0",
-		"@tsconfig/svelte": "^5.0.8",
-		"svelte": "^5.55.5",
-		"svelte-check": "^4.4.6",
-		"svelte-preprocess": "^6.0.3",
-		"tslib": "^2.8.1",
+		"@sveltejs/kit": "^2.63.0",
+		"@sveltejs/vite-plugin-svelte": "^7.1.2",
+		"@types/node": "^25.9.3",
+		"svelte": "^5.56.1",
+		"svelte-check": "^4.6.0",
 		"typescript": "^6.0.3",
-		"vite": "^8.0.10"
+		"vite": "^8.0.16"
 	},
 	"dependencies": {
-		"@vitejs/plugin-legacy": "^8.0.1",
-		"crypto-js": "^4.2.0",
-		"kekupload-lib-ts": "2.0.3",
-		"prettier": "^3.8.3",
-		"terser": "^5.46.2"
+		"@sveltejs/adapter-static": "^3.0.10",
+		"kekupload-lib-ts": "^2.0.3"
 	}
 }

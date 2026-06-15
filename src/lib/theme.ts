@@ -3,6 +3,7 @@ export function getThemeHref(theme: string) {
 }
 
 export function getActiveTheme(defaultTheme: string) {
+	if (typeof localStorage === "undefined") return defaultTheme;
 	return localStorage.theme || defaultTheme;
 }
 
@@ -15,7 +16,6 @@ export function applyTheme(theme: string) {
 	const href = getThemeHref(theme);
 	if (currentTheme.getAttribute("href") === href) {
 		localStorage.theme = theme;
-
 		return Promise.resolve(true);
 	}
 

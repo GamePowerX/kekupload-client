@@ -3,7 +3,7 @@ export interface Theme {
 	file: string;
 }
 
-export default [
+const themes: Theme[] = [
 	{ name: "Korng", file: "korng" },
 	{ name: "The matrix", file: "matrix" },
 	{ name: "Ayu dark", file: "ayu_dark" },
@@ -12,3 +12,5 @@ export default [
 	{ name: "Beautiful", file: "beautiful" },
 	{ name: "Moonlight", file: "moonlight" }
 ];
+
+export default themes;
